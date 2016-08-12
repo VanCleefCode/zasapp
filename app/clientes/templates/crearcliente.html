@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+
+{% block main %}
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Clientes</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+	        <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Agregar Cliente</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form class="form-horizontal form-label-left input_mask" id="addCliente" >
+                    {% csrf_token %}
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.nombre}}
+                        <span class="fa fa-user form-control-feedback left" title="Nombre" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.apellido}}
+                        <span class="fa fa-user form-control-feedback right" title="Apellido" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.dni}}
+                        <span class="fa fa-user form-control-feedback left" title="DNI" aria-hidden="true"></span>
+                      </div>
+                        
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.telefono}}
+                        <span class="fa fa-phone form-control-feedback right" title="Telefono" aria-hidden="true"></span>
+                    </div>
+        <!-- EMPRESA -->
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.empresa}}
+                        <span class="fa fa-user form-control-feedback left" title="Empresa" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.cif}}
+                        <span class="fa fa-user form-control-feedback right" title="CIF" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.email}}
+                        <span class="fa fa-user form-control-feedback left" title="DNI" aria-hidden="true"></span>
+                      </div>
+                        
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.telefono1}}
+                        <span class="fa fa-phone form-control-feedback right" title="Telefono" aria-hidden="true"></span>
+                    </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.ciudad}}
+                        <span class="fa fa-user form-control-feedback left" title="Ciudad" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.provincia}}
+                        <span class="fa fa-user form-control-feedback right" title="Provincia" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.codpostal}}
+                        <span class="fa fa-user form-control-feedback left" title="Codigo Postal" aria-hidden="true"></span>
+                      </div>
+                        
+                    <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
+                        {{form.direccion}}
+                        <span class="fa fa-phone form-control-feedback right" title="Dirección" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-xs-12 form-group has-feedback">
+
+                          <a href="" id="triggerFile" style="padding:0px;box-sizing:border-box">
+                          <img width="200px" height="200px" id="blah" class="img-border" src="{% static "img/no-image.png" %}"  alt="">
+                           </a>
+                        {{form.thumbnail}}
+                      </div>
+
+
+                      <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <button type="button" class="btn btn-primary">Cancelar</button>
+                          <button type="submit" class="btn btn-success">Crear</button>
+                        </div>
+                      </div>
+
+                    </form>
+
+                  </div>
+                </div>
+				</div>
+			</div>
+      </div>
+{% endblock main %}	
+
+
+{% block script_link %}
+  
+      <!-- bootstrap-progressbar -->
+    <script src="{% static "vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" %}"></script>
+   
+{% endblock script_link %}
+
+
+{% block script_code %}
+  
+ <script src="{% static "js/cliente.js" %}"></script>
+
+
+
+<script>
+$('#triggerFile').on('click', function(e){
+        e.preventDefault()
+        $("#id_thumbnail").trigger('click')
+    });
+</script>
+<!-- cargar img -->
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#id_thumbnail").change(function(){
+    readURL(this);
+});
+</script>
+
+{% endblock script_code %}

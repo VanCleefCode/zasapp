@@ -1,0 +1,17 @@
+{%if object_list%}
+{% for t in object_list%}
+<tr>
+<td><input type="radio" name="idtemplate" value="{{t.pk}}"></td>
+<td>{{t.nombre}}</td>
+<td><a target="_blank" href="{{t.url}}">{{t.url}}</a></td>
+</tr>
+{%endfor%}
+{%else%}
+<tr>
+	<td colspan="3" align=""> No tiene templates</td>
+</tr>
+{%endif%}
+
+<script>
+	$('#monto').html({{view.monto}} +' EUR');
+</script>

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+
+
+{% block title %}
+    Radio Web Digital | Account
+{% endblock %}
+
+{% block Paises %}
+    <div class="thumbaccount">
+    <div class="capa">
+        {% thumbnail user.userprofile.thumb "200x200" crop="center" as im %}
+            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}" class="img-responsive img-circle">
+        {% endthumbnail %}
+        <h2>{{ user.username }}</h2>
+    </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+
+    <div class="content">
+        <div class="block">
+            <div class="title">  Nombre y Apellido del Usuario </div>
+            <div class="form">
+                <form method="post" action="/account/" name='name'> {% csrf_token %}
+                    <h4>Nombre Completo: {{user.first_name}} {{user.last_name}}</h4>
+                    <table>{{change_name_form.as_table}}</table>
+                    <p>{{name_message}}</p>
+                    <input type="submit" class="boton" value="Guardar Cambios" name="change_name"/>
+                </form>
+            </div>
+        </div>
+
+        <div class="block">
+            <div class="title">  Email de Usuario </div>
+            <div class="form">
+               <form method="post" action="/account/" name='email'> {% csrf_token %}
+                    <h4>Email Actual: {{user.email}}</h4>
+                    <table>{{change_email_form.as_table}}</table>
+                    <p>{{email_message}}</p>
+                    <input type="submit" class ="boton" value="Guardar Cambios" name="change_email" />
+                </form>
+            </div>
+        </div>
+
+        
+    </div>
+
+{% endblock %}

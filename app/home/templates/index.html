@@ -1,0 +1,87 @@
+{% load staticfiles %}
+{% load thumbnail %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	 <title>{% block title %}
+	 	Zasapp - Àdministración
+	 {% endblock title %}</title>
+	
+	<!-- CSS -->
+  	<link href="{% static "css/normalize.min.css" %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+	<!-- FONT GOOGLE -->
+
+
+
+</head>
+<body>
+	<header>
+		<section>
+			<div class="logo">
+				<img src="{% static "img/logo.jpg" %}" alt="">
+			</div>
+			<div class="userInfo">
+				{% block userçInfo %}
+						
+				{% endblock userçInfo %}
+			</div>
+		</section>
+	</header>
+	
+	<main>
+
+	{% block main %}
+		<section>
+			<br>
+			<div class="formLog">
+				<label>Inicia Sesion</label>
+				<form id="LoginForm">
+					{% csrf_token %}
+					<input type="text" placeholder="Usuario" id="usuario" name="usuario">
+					<input type="password" placeholder="Clave" id="clave" name="clave">
+					<input type="submit" value="Entrar">
+				</form>
+			</div>
+			<br>
+			<h1>Ventas y Presupuestos</h1>
+
+ 	</section>
+	{% endblock main %}
+
+	</main>
+
+	<footer>
+
+
+		<section>
+			<label for="">© Zasapp - Todos los derechos reservados</label>
+
+			<img src="{% static "img/loading.gif" %}" id="loading" width="20px" 	 alt="">
+		</section>
+
+
+		
+	</footer>
+	
+	
+	<!-- SUCCESS  MESSAGE-->
+	<div class="success" id="success">
+		
+	</div>
+
+	<!-- ERROR  MESSAGE-->
+	<div class="error" id="error">
+			Mensaje de Error
+	</div>
+
+<script type= "text/javascript" src="{% static "js/jquery.min.js" %}"></script>		
+<script type= "text/javascript" src="{% static "js/script_users.js" %}"></script>		
+
+</body>
+</html>

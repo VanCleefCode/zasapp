@@ -1,0 +1,24 @@
+{% if view.citas %}
+
+{% for c in view.citas%}
+                        <tr id="{{c.id}}_fila">
+                          <td>{{ c.dia }}</td>
+                          <td><strong>{{ c.hora }}</strong></td>
+                          <td align="center"> 
+                          {% if not c.contacto_id %}
+                            <a  href="#{{c.pk}}_fila" onclick="BorrarCita({{c.pk}},'{{csrf_token}}')"><i class="fa fa-remove" title="Eliminar"></i></a> 
+                          {% else %}
+                            <a  href="#{{c.pk}}_fila" onclick="BorrarContacto({{c.pk}},'{{csrf_token}}')"><i class="fa fa-eye" title="Mostrar"></i></a> 
+                          {% endif %}
+                          </td>
+                        </tr>
+{% endfor %}
+
+{% else %}
+                        <tr id="NoHayTR">
+                          <td>--</td>
+                          <td>--</td>
+                          <td align="center">--</td>
+                        </tr>
+
+{% endif %}

@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+{% block title %}
+	Almorir.me - Sobre Nosotros
+{% endblock title %}
+
+{% block main %}
+		
+	<div class="info">
+		
+		<h1>Sobre Nosotros</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, libero, sint. Architecto consectetur est molestias sit ex velit placeat, libero fuga modi, doloremque earum fugit, impedit magnam harum repudiandae consequatur? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, doloribus, cum. Soluta perspiciatis, sapiente maiores ad vero exercitationem explicabo quas aliquid. Delectus alias in pariatur? Magnam quis itaque quibusdam dolorum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error consectetur unde, ex impedit voluptate recusandae. Iure distinctio saepe, vero animi suscipit quasi quo adipisci quod esse magnam labore, earum provident!</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias nemo modi, velit culpa eos natus neque dolor quibusdam mollitia quaerat cupiditate cum dolores corporis ratione aut odit maiores et, nihil.</p>
+		
+		<div class="conteam">
+			
+			<div class="cardteam">
+				<img src="{% static "img/team/cfinol.jpg" %}" alt="">
+				<h3>Carlos Finol <br><small>CEO - Founder</small></h3>
+				<p>Fabricando Ideas para crear grandes cosas</p>
+			</div>
+	
+			<div class="cardteam">
+				<img src="{% static "img/team/jborges.jpg" %}" alt="">	
+				<h3>José Borges<br><small>CTO - Founder</small></h3>		
+				<p>Haciendo que pase, haciendolo simple</p>
+			</div>
+	
+			<div class="cardteam">
+			
+			</div>
+		</div>
+
+		<p style="margin-bottom:80px"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore vel, non sapiente consectetur ipsum, quas incidunt animi corporis ad repudiandae laboriosam est ducimus inventore fuga quibusdam, doloribus saepe mollitia id.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae officia incidunt eveniet laborum atque nemo cupiditate aspernatur sit tempore tenetur. A ducimus est voluptatum eos alias facilis totam ipsa reiciendis.</p>
+	</div>
+
+{% endblock main %}

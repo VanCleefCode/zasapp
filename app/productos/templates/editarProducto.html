@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load thumbnail %}
+
+
+{% block main %}
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>Productos</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+
+	        <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Editar Producto</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <br />
+                    <form class="form-horizontal form-label-left input_mask" id="EditarProducto" >
+                    {% csrf_token %}
+
+                      <div class="col-xs-12 form-group has-feedback">
+                        {{ form.nombre }}
+                        <span class="fa fa-user form-control-feedback left" title="Nombre" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-xs-12 form-group has-feedback">
+                        {{form.descripcion}}
+                        <span class="fa fa-envelope form-control-feedback left" title="Apellido" aria-hidden="true"></span>
+                        
+                      </div>
+
+                      <div class="col-xs-12 form-group has-feedback">
+                        {{form.precio}}
+                        <span class="fa fa-euro form-control-feedback left" title="Email" aria-hidden="true"></span>
+                      </div>
+
+                      <div class="col-xs-12 form-group has-feedback">
+                          <div style="width:200px;height:200px;overflow:hidden">
+                              <a href="" id="triggerFile" style="padding:0px;box-sizing:border-box">
+                              {% thumbnail producto.thumbnail "200x200" crop="center" as im %}
+                              <img width="200px" height="200px" id="blah" class="img-border" src=
+                              "{{ im.url }}">   
+                            {% endthumbnail %}
+
+                               </a>
+                            {{form.thumbnail}}
+                        </div>
+                      </div>
+
+               
+                      <div class="form-group">
+                        <div class="col-md-9 col-sm-9 col-xs-12">
+                          <button type="button" class="btn btn-primary">Cancelar</button>
+                          <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                      </div>
+                      {{form.id}}
+                    </form>
+        
+        <form id="AddTemplate" >
+                    {% csrf_token %}
+
+                      <div class="col-xs-4 form-group">
+                      <input type="text" class="form-control" placeholder="Nombre Template" id="nombreP">
+                      </div>
+                      <div class="col-xs-4 form-group">
+                      <input type="text" class="form-control" placeholder="URL del Template" id="urlP">
+                      </div>
+                    <div class="form-group">
+                        <div class="col-xs-4">
+                          
+                          <button type="submit" class="btn btn-success">Agregar</button>
+                        </div>
+                      </div>                      
+
+        </form>
+        <table class="table">
+            <thead>
+              <th>Nombre</th>
+              <th>Url</th>
+              <th style="text-align:center">Acción</th>
+            </thead>
+            <tbody id="cuerpotabla">
+            {% if view.templates %}
+              {% for t in view.templates %}
+                  <tr>
+                    <td>{{t.nombre}}</td>
+                    <td>{{t.url}}</td>
+                    <td align="center">
+                    <i class="fa fa-edit"></i> <i class="fa fa-remove"></i></td>
+                 </tr>
+              {% endfor %}
+            {% else %}
+              <tr id="NoFila"><td colspan="3" align="center"> No Hay Datos</td></tr>
+            {% endif %}
+            </tbody>
+          </table>
+
+
+                  </div>
+                </div>
+				</div>
+			</div>
+      </div>
+{% endblock main %}	
+
+
+{% block script_link %}
+  
+      <!-- bootstrap-progressbar -->
+    <script src="{% static "vendors/bootstrap-progressbar/bootstrap-progressbar.min.js" %}"></script>
+    <!-- iCheck -->
+    <script src="{% static "vendors/iCheck/icheck.min.js" %}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{% static "js/moment/moment.min.js" %}"></script>
+    <script src="{% static "js/datepicker/daterangepicker.js" %}"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="{% static "vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js" %}"></script>
+    <script src="{% static "vendors/jquery.hotkeys/jquery.hotkeys.js" %}"></script>
+    <script src="{% static "vendors/google-code-prettify/src/prettify.js" %}"></script>
+    <!-- jQuery Tags Input -->
+    <script src="{% static "vendors/jquery.tagsinput/src/jquery.tagsinput.js" %}"></script>
+    <!-- Switchery -->
+    <script src="{% static "vendors/switchery/dist/switchery.min.js" %}"></script>
+    <!-- Select2 -->
+    <script src="{% static "vendors/select2/dist/js/select2.full.min.js" %}"></script>
+    <!-- Parsley -->
+    <script src="{% static "vendors/parsleyjs/dist/parsley.min.js" %}"></script>
+    <!-- Autosize -->
+    <script src="{% static "vendors/autosize/dist/autosize.min.js" %}"></script>
+    <!-- jQuery autocomplete -->
+    <script src="{% static "vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js" %}"></script>
+    <!-- starrr -->
+    <script src="{% static "vendors/starrr/dist/starrr.js" %}"></script>
+
+{% endblock script_link %}
+
+
+{% block script_code %}
+
+
+ <script src="{% static "js/producto.js" %}"></script>
+
+<script>
+$('#triggerFile').on('click', function(e){
+        e.preventDefault()
+        $("#id_thumbnail").trigger('click')
+    });
+</script>
+<!-- cargar img -->
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#id_thumbnail").change(function(){
+    readURL(this);
+});
+</script>
+
+
+{% endblock script_code %}

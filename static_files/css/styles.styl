@@ -1,0 +1,227 @@
+@import 'nib'
+@import 'nib/vendor'
+@import 'nib/gradients'
+
+vendor_prefixes = o ms webkit moz
+
+
+ @font-face
+   font-family Abel
+   font-style normal
+   src url(../fonts/Abel-Regular.ttf)
+
+
+
+media_queries = {
+  mobile  : "only screen and (max-width: 600px)",  
+  mobile-land  : "only screen and (max-height: 320px)",
+  tablet  : "only screen and (min-width: 601px) and (max-width: 800px)",
+  desktop : "only screen and (min-width: 801px)"
+}
+
+for_breakpoint(breakpoints)
+  conditions = ()
+  for breakpoint in breakpoints
+    push(conditions, media_queries[breakpoint])
+  conditions = join(", ", conditions)
+  @media conditions
+    {block}
+ 
+cprimary = #ffa800
+cback =  #fff //rgba(#00FFFF	 .75)
+ctexto = #333
+
+
+
+#passwordfuerte
+	display none
+	color red
+	font-size 1.2em
+a
+	text-decoration none
+	color ctexto
+
+
+body
+	font-family Abel
+	color ctexto
+	background cback
+	height 100vh
+
+//****HEADER Y NAV****//
+
+.top 
+	background linear-gradient(top, #EFC137, #F19D2B)
+	height 10px
+
+
+header
+	margin 0px
+	width 100%
+	height 50px
+	background 	background #fff
+	overflow hidden
+	padding 10px
+	border-bottom 5px solid #DEA846
+	box-sizing border-box
+	+for_breakpoint(mobile)
+		height 80px
+		
+	section
+		max-width 90%
+		margin auto
+		position relative
+		+for_breakpoint(mobile)
+			max-width 90%
+			font-size .9em
+	.logo
+		float left
+	img 
+		+for_breakpoint(mobile)
+			width 100px
+	.userInfo
+		float right 
+main
+	section
+		width 100%
+		height "calc(100vh - %s)" % 85px
+		background url(../img/fondo.jpg) no-repeat
+		background-size cover
+		background-position center center
+		box-sizing border-box
+		+for_breakpoint(mobile)
+			height "calc(100vh - %s)" % 115px
+		h1 
+			display block
+			padding-left 30px
+			margin auto
+			color white
+			text-shadow 5px 5px 2px #333
+			+for_breakpoint(mobile tablet)
+				display none
+		.formLog
+			width 320px
+			background rgba(#0B0B0B, .4)
+			padding 20px
+			box-sizing border-box
+			text-align center
+			border-radius 15px
+			float right 
+			margin-right 50px
+			overflow hidden
+			+for_breakpoint(mobile)
+				width 300px
+				float none
+				margin auto 
+				margin-bottom 50px
+				padding 15px
+				padding-top 10px
+				margin-top -5px
+			input 
+				display block
+				width 90%
+				margin auto
+				margin-top 10px
+				padding 3px 3px 3px 25px
+				box-sizing border-box
+				border-radius 5px
+				border none
+				+for_breakpoint(mobile)
+					margin-top 5px
+			#usuario
+				background  white url(../img/user.png) no-repeat
+				background-position 0px 3px			
+			#clave
+				background  white url(../img/lock.png) no-repeat
+				background-position 0px 3px			
+			input[type="submit"]
+				background linear-gradient(top,#DEB770,#DEA846)
+				padding 5px
+				border none
+				font-size 1.4em
+				font-weight bold
+				cursor pointer	
+				&:hover
+					background linear-gradient(top,#DEA846,#DEB770)
+				&:active 
+					background linear-gradient(top,#DEB770,#DEA846)
+				+for_breakpoint(mobile)
+					font-size 1.2em
+			label 
+				color #DEA846
+				font-size 1.5em
+			
+footer
+	position fixed
+	bottom 0
+	left 0
+	background #0B0B0B
+	border-top 5px solid #DEA846
+	width 100%
+	height 30px
+	color white
+	+for_breakpoint(mobile)
+		font-size .7em
+		text-align center
+	section 
+		width 90%
+		margin auto 
+		font-size 1.2em
+		font-weight bold
+		line-height 30px
+		img 
+			float right 
+			margin-top 3px
+			display none
+.movil-hidden
+	+for_breakpoint(mobile)
+		display none
+.movil-show
+	display none
+	+for_breakpoint(mobile)
+		display block
+
+.loading
+	position fixed
+	top 0px
+	left 0px
+	width 100%
+	height 100vh
+	background rgba(white, .3)
+	display none		
+	img
+		top 50%
+		left 50%
+		position absolute
+		width 60px
+		height 60px
+		margin-top -60px
+		margin-left -60px
+.success, .error
+	width 100%
+	height 30px
+	margin auto
+	position fixed
+	text-align center
+	background rgba(green,.8)
+	border 1px solid ctexto
+	top 1px
+	display none
+	color #fff
+	box-sizing border-box
+	overflow hidden
+	z-index +1 !important
+	font-size 1.3em
+.error
+	background rgba(red,.8)
+	
+
+/**** HIDDEN ****/
+.hidden
+	display none
+	
+.checkusername, .uncheckusername
+	span
+		color cprimary
+.img-circle
+	border-radius 50%
